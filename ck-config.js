@@ -57,14 +57,14 @@ const default_config = {
             contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
         },
         image: {
-            toolbar: [ 'imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight' ],
+            toolbar: [ 'imageTextAlternative',
+                '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'
+            ],
             styles: [
                 // This option is equal to a situation where no style is applied.
                 'full',
-
                 // This represents an image aligned to the left.
                 'alignLeft',
-
                 // This represents an image aligned to the right.
                 'alignRight'
             ]
@@ -77,7 +77,6 @@ const default_config = {
                     '|', 'superscript', 'subscript',
                     '|', 'alignment', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable',
                     '|', 'link', 'InsertImage','mediaEmbed',
-
                  ]
     }
 
@@ -93,6 +92,9 @@ ClassicEditor.defaultConfig = default_config;
 InlineEditor.builtinPlugins = default_plugins;
 InlineEditor.defaultConfig = default_config;
 
+// TODO: potentially add methods to:
+//  - sanatize html
+//  - add config options
 export default {
     "classic_editor": ClassicEditor,
     "inline_editor": InlineEditor,
