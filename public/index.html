@@ -69,7 +69,7 @@
             // for each 'editor_window' instantiate a classic editor using default config
             $('.editor.classic').each(function(){
 
-                instanced_editor = HL_CKEDITOR.default.classic_editor
+                HL_CKEDITOR.default.classic_editor
                     .create(this,{
                         imageUploadUrl: "/upload_img/"
                     })
