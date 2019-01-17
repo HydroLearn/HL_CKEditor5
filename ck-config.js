@@ -1,6 +1,7 @@
 // import base editor
 import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import InlineEditorBase from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
+import BalloonEditorBase from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor';
 
 // import basic toolbar controls
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
@@ -30,10 +31,13 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
     import Link from '@ckeditor/ckeditor5-link/src/link';
 
     // image imports
-        import InsertImage from './custom_plugins/ImagePlugin'
+        //import InsertImage from './custom_plugins/ImagePlugin'
+        import UploadAdapter from './custom_plugins/UploadAdapter'
+        import Image from '@ckeditor/ckeditor5-image/src/image';
         import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
         import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
         import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
+        import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 
 
 // Plugins to include in the build
@@ -44,12 +48,14 @@ const default_plugins = [
     Superscript, Subscript, Strikethrough,
     List, Table, TableToolbar, Alignment, BlockQuote,
 
-    ImageToolbar, ImageCaption, ImageStyle, InsertImage,
+    Image, ImageToolbar, ImageCaption, ImageStyle, ImageUpload,
     PasteFromOffice, MediaEmbed, Link
 ]
 
 // Editor Configuration
 const default_config = {
+        // plugins: { ... migrated to the default_plugins object ... }
+        imageUploadUrl: "404",
         alignment: {
             options: ['left', 'right', 'center', 'justify']
         },
@@ -72,19 +78,23 @@ const default_config = {
         mediaEmbed: {
             // configuration...
         },
+        extraPlugins: [ UploadAdapter ],
+
         toolbar: [  'undo', 'redo',
                     '|', 'bold', 'italic', 'underline', 'strikethrough',
                     '|', 'superscript', 'subscript',
                     '|', 'alignment', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable',
-                    '|', 'link', 'InsertImage','mediaEmbed',
-                 ]
+                    '|', 'link', 'mediaEmbed', 'imageUpload', // 'InsertImage'
+
+                ],
+
     }
 
 
 // extend this editor from the base
 class ClassicEditor extends ClassicEditorBase {}
 class InlineEditor extends InlineEditorBase {}
-
+class BalloonEditor extends BalloonEditorBase {}
 // add the default config and plugins to the extended editor
 ClassicEditor.builtinPlugins = default_plugins;
 ClassicEditor.defaultConfig = default_config;
@@ -92,12 +102,16 @@ ClassicEditor.defaultConfig = default_config;
 InlineEditor.builtinPlugins = default_plugins;
 InlineEditor.defaultConfig = default_config;
 
+BalloonEditor.builtinPlugins = default_plugins;
+BalloonEditor.defaultConfig = default_config;
+
 // TODO: potentially add methods to:
 //  - sanatize html
 //  - add config options
 export default {
     "classic_editor": ClassicEditor,
     "inline_editor": InlineEditor,
+    "balloon_editor": BalloonEditor,
 }
 
 

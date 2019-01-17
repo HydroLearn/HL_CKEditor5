@@ -32,8 +32,8 @@
     <body>
         <h1>Custom CKEditor 5 Build</h1>
         <div class="sample_wrapper">
-            <h2>Basic Editor</h2>
-            <div class='editor_window'>
+            <h2>Classic Editor</h2>
+            <div class='editor classic'>
                 <p>Editor content goes here.</p>
 
                 <p>Simple image:</p>
@@ -44,14 +44,19 @@
             </div>
         </div>
         <div class="sample_wrapper">
-            <h2>Second Editor</h2>
-            <div class="editor_window"></div>
+            <h2>Balloon Editor <span class="note">Note: must make selection for controls to appear</span></h2>
+            <div class="editor balloon">
+                <p>
+                    Some sample inline content for example purposes. Clicking this text will highlight the editor
+                    and show the controls available for modifying the text and embedding plugins.
+                </p>
+            </div>
         </div>
 
         <div class="sample_wrapper">
         <h2>Inline Editor <span class="note">Note: click text below and controls will appear</span></h2>
 
-            <div class="editor_inline">
+            <div class="editor inline">
                 <p>
                     Some sample inline content for example purposes. Clicking this text will highlight the editor
                     and show the controls available for modifying the text and embedding plugins.
@@ -62,17 +67,32 @@
         <script>
 
             // for each 'editor_window' instantiate a classic editor using default config
-            $('.editor_window').each(function(){
-                HL_CKEDITOR.default.classic_editor
-                    .create(this)
+            $('.editor.classic').each(function(){
+
+                instanced_editor = HL_CKEDITOR.default.classic_editor
+                    .create(this,{
+                        imageUploadUrl: "/upload_img/"
+                    })
                     .catch(err => {
                         console.log(err.stack)
                     });
             })
 
-            $('.editor_inline').each(function(){
+            $('.editor.inline').each(function(){
                 HL_CKEDITOR.default.inline_editor
-                    .create(this)
+                    .create(this,{
+                        imageUploadUrl: "/upload_img/"
+                    })
+                    .catch(err => {
+                        console.log(err.stack)
+                    });
+            })
+
+            $('.editor.balloon').each(function(){
+                HL_CKEDITOR.default.balloon_editor
+                    .create(this,{
+                        imageUploadUrl: "/upload_img/"
+                    })
                     .catch(err => {
                         console.log(err.stack)
                     });

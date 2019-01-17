@@ -1,8 +1,10 @@
 # exclude everything in the dist directory
 public/dist/*
+uploaded_images/*
 
 # include the dummy file to ensure directory is created
 !public/dist/dummy.txt
+!uploaded_images/dummy.txt
 
 # Logs
 logs

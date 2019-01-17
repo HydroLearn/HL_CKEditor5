@@ -1,6 +1,6 @@
 
 
-class MyUploadAdapter {
+class HL_UploadAdapter {
     constructor( loader, url ) {
         // The FileLoader instance to use during the upload. It sounds scary but do not
         // worry — the loader will be passed into the adapter later on in this guide.
@@ -86,19 +86,19 @@ class MyUploadAdapter {
         // Prepare the form data.
         const data = new FormData();
         data.append( 'upload', this.loader.file );
-
+        
         // Send the request.
         this.xhr.send( data );
     }
 }
+// modified upload adapter to pull upload url from editor config
+export default function UploadAdapter( editor ) {
 
-function MyCustomUploadAdapterPlugin( editor ) {
     editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
-
         // Configure the URL to the upload script in your back-end here!
-        return new MyUploadAdapter( loader, 'http://example.com/image/upload/path' );
+        return new HL_UploadAdapter( loader, editor.config.get('imageUploadUrl') );
     };
 }
 
-// add this to the create of classic Editor
+// add this to the config of classic Editor
 //      extraPlugins: [ MyCustomUploadAdapterPlugin ],
