@@ -1,11 +1,12 @@
 
 
 class HL_UploadAdapter {
-    constructor( loader, url ) {
+    constructor( loader, url, csrf_token ) {
         // The FileLoader instance to use during the upload. It sounds scary but do not
         // worry — the loader will be passed into the adapter later on in this guide.
         this.loader = loader;
 
+        this.csrf_token = csrf_token;
         // The upload URL in your server back-end. This is the address the XMLHttpRequest
         // will send the image data to.
         this.url = url;
@@ -85,8 +86,9 @@ class HL_UploadAdapter {
     _sendRequest() {
         // Prepare the form data.
         const data = new FormData();
+        data.append( 'csrfmiddlewaretoken', this.csrf_token );
         data.append( 'upload', this.loader.file );
-        
+
         // Send the request.
         this.xhr.send( data );
     }
@@ -96,7 +98,8 @@ export default function UploadAdapter( editor ) {
 
     editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
         // Configure the URL to the upload script in your back-end here!
-        return new HL_UploadAdapter( loader, editor.config.get('imageUploadUrl') );
+        console.log(editor.config.get('csrf_token'))
+        return new HL_UploadAdapter( loader, editor.config.get('imageUploadUrl'), editor.config.get('csrf_token'));
     };
 }
 

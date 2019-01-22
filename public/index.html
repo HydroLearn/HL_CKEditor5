@@ -71,7 +71,8 @@
 
                 HL_CKEDITOR.default.classic_editor
                     .create(this,{
-                        imageUploadUrl: "/upload_img/"
+                        imageUploadUrl: "/upload_img/",
+                        csrf_token: "test_token"
                     })
                     .catch(err => {
                         console.log(err.stack)
@@ -81,7 +82,8 @@
             $('.editor.inline').each(function(){
                 HL_CKEDITOR.default.inline_editor
                     .create(this,{
-                        imageUploadUrl: "/upload_img/"
+                        imageUploadUrl: "/upload_img/",
+                        csrf_token: "test_token"
                     })
                     .catch(err => {
                         console.log(err.stack)
@@ -91,7 +93,8 @@
             $('.editor.balloon').each(function(){
                 HL_CKEDITOR.default.balloon_editor
                     .create(this,{
-                        imageUploadUrl: "/upload_img/"
+                        imageUploadUrl: "/upload_img/",
+                        csrf_token: "test_token"
                     })
                     .catch(err => {
                         console.log(err.stack)
