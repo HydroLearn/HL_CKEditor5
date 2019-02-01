@@ -98,7 +98,7 @@ export default function UploadAdapter( editor ) {
 
     editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
         // Configure the URL to the upload script in your back-end here!
-        console.log(editor.config.get('csrf_token'))
+        //console.log(editor.config.get('csrf_token'))
         return new HL_UploadAdapter( loader, editor.config.get('imageUploadUrl'), editor.config.get('csrf_token'));
     };
 }
