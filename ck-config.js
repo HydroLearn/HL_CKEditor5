@@ -2,6 +2,7 @@
 import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import InlineEditorBase from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
 import BalloonEditorBase from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor';
+import DocEditorBase from '@ckeditor/ckeditor5-editor-decoupled/src/decouplededitor';
 
 // import basic toolbar controls
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
@@ -95,6 +96,8 @@ const default_config = {
 class ClassicEditor extends ClassicEditorBase {}
 class InlineEditor extends InlineEditorBase {}
 class BalloonEditor extends BalloonEditorBase {}
+class DocumentEditor extends DocEditorBase {}
+
 // add the default config and plugins to the extended editor
 ClassicEditor.builtinPlugins = default_plugins;
 ClassicEditor.defaultConfig = default_config;
@@ -105,6 +108,9 @@ InlineEditor.defaultConfig = default_config;
 BalloonEditor.builtinPlugins = default_plugins;
 BalloonEditor.defaultConfig = default_config;
 
+DocumentEditor.builtinPlugins = default_plugins;
+DocumentEditor.defaultConfig = default_config;
+
 // TODO: potentially add methods to:
 //  - sanatize html
 //  - add config options
@@ -112,6 +118,7 @@ export default {
     "classic_editor": ClassicEditor,
     "inline_editor": InlineEditor,
     "balloon_editor": BalloonEditor,
+    "document_editor": DocumentEditor,
 }
 
 

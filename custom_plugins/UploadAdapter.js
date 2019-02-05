@@ -45,6 +45,9 @@ class HL_UploadAdapter {
         const loader = this.loader;
         const genericErrorText = 'Couldn\'t upload file:' + ` ${ loader.file.name }.`;
 
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("X-CSRFToken", this.csrf_token);
+
         xhr.addEventListener( 'error', () => reject( genericErrorText ) );
         xhr.addEventListener( 'abort', () => reject() );
         xhr.addEventListener( 'load', () => {
@@ -64,8 +67,9 @@ class HL_UploadAdapter {
             // at least the "default" URL, pointing to the image on the server.
             // This URL will be used to display the image in the content. Learn more in the
             // UploadAdapter#upload documentation.
+            alert('response' + response.asset.url)
             resolve( {
-                default: response.url
+                default: response.asset.url
             } );
         } );
 
@@ -86,8 +90,10 @@ class HL_UploadAdapter {
     _sendRequest() {
         // Prepare the form data.
         const data = new FormData();
-        data.append( 'csrfmiddlewaretoken', this.csrf_token );
-        data.append( 'upload', this.loader.file );
+        //data.append( 'csrfmiddlewaretoken', this.csrf_token );
+        data.append( 'file', this.loader.file );
+
+
 
         // Send the request.
         this.xhr.send( data );
