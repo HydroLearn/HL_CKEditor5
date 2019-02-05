@@ -22,6 +22,7 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
     import List from '@ckeditor/ckeditor5-list/src/list';
     import Table from '@ckeditor/ckeditor5-table/src/table';
     import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+    import Heading from '@ckeditor/ckeditor5-heading/src/heading';
 
 
     // paste from office support
@@ -44,6 +45,7 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 // Plugins to include in the build
 const default_plugins = [
     Essentials,
+    Heading,
     Paragraph,
     Bold, Italic, Underline,
     Superscript, Subscript, Strikethrough,
@@ -81,7 +83,8 @@ const default_config = {
         },
         extraPlugins: [ UploadAdapter ],
 
-        toolbar: [  'undo', 'redo',
+        toolbar: [  'heading',
+                    '|','undo', 'redo',
                     '|', 'bold', 'italic', 'underline', 'strikethrough',
                     '|', 'superscript', 'subscript',
                     '|', 'alignment', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable',
