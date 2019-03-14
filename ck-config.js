@@ -18,6 +18,10 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
     import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
     import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 
+    // plugin is not robust enough for the support we need
+    // import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
+
+
     // structured elements
     import List from '@ckeditor/ckeditor5-list/src/list';
     import Table from '@ckeditor/ckeditor5-table/src/table';
@@ -47,6 +51,7 @@ const default_plugins = [
     Essentials,
     Heading,
     Paragraph,
+    // Highlight,
     Bold, Italic, Underline,
     Superscript, Subscript, Strikethrough,
     List, Table, TableToolbar, Alignment, BlockQuote,
@@ -62,6 +67,46 @@ const default_config = {
         alignment: {
             options: ['left', 'right', 'center', 'justify']
         },
+        // highlight: {
+        //     options: [
+        //         {
+        //             model: 'redPen',
+        //             class: 'pen-red',
+        //             title: 'Red pen',
+        //             color: '#980000',
+        //             type: 'pen'
+        //         },
+        //         {
+        //             model: 'orangePen',
+        //             class: 'pen-orange',
+        //             title: 'Orange',
+        //             color: '#ffab40',
+        //             type: 'pen'
+        //         },
+        //         {
+        //             model: 'bluePen',
+        //             class: 'pen-blue',
+        //             title: 'Blue',
+        //             color: '#6d9eeb',
+        //             type: 'pen'
+        //         },
+        //         {
+        //             model: 'greenPen',
+        //             class: 'pen-green',
+        //             title: 'Red pen',
+        //             color: '#38761d',
+        //             type: 'pen'
+        //         },
+        //         {
+        //             model: 'grayPen',
+        //             class: 'pen-gray',
+        //             title: 'gray pen',
+        //             color: '#999999',
+        //             type: 'pen'
+        //         },
+        //     ]
+        // },
+
         table: {
             contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
         },
@@ -85,7 +130,7 @@ const default_config = {
 
         toolbar: [  'heading',
                     '|','undo', 'redo',
-                    '|', 'bold', 'italic', 'underline', 'strikethrough',
+                    '|', /* 'highlight' */, 'bold', 'italic', 'underline', 'strikethrough',
                     '|', 'superscript', 'subscript',
                     '|', 'alignment', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable',
                     '|', 'link', 'mediaEmbed', 'imageUpload', // 'InsertImage'
