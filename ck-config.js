@@ -8,6 +8,8 @@ import DocEditorBase from '@ckeditor/ckeditor5-editor-decoupled/src/decouplededi
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 
 // text formatting plugins
+    import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat';
+
     import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
     import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
     import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
@@ -17,15 +19,17 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
     import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
     import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
     import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
-
-    // plugin is not robust enough for the support we need
-    // import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
-
+    import Indent from '@ckeditor/ckeditor5-indent/src/indent';
+    import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
+    import Font from '@ckeditor/ckeditor5-font/src/font';
 
     // structured elements
     import List from '@ckeditor/ckeditor5-list/src/list';
     import Table from '@ckeditor/ckeditor5-table/src/table';
     import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+    import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
+    import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties';
+
     import Heading from '@ckeditor/ckeditor5-heading/src/heading';
 
 
@@ -40,79 +44,135 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
         //import InsertImage from './custom_plugins/ImagePlugin'
         import UploadAdapter from './custom_plugins/UploadAdapter'
         import Image from '@ckeditor/ckeditor5-image/src/image';
+        import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
         import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
         import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
         import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
         import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 
 
+// Collection of color definitions for use by the font styling options
+const COLOR_PALETTE = [
+    {
+        color: 'hsl(0, 0%, 0%)',
+        label: 'Black'
+    },
+    {
+        color: 'hsl(0, 0%, 30%)',
+        label: 'Dim grey'
+    },
+    {
+        color: 'hsl(0, 0%, 60%)',
+        label: 'Grey'
+    },
+    {
+        color: 'hsl(0, 0%, 90%)',
+        label: 'Light grey'
+    },
+    {
+        color: 'hsl(0, 0%, 100%)',
+        label: 'White',
+        hasBorder: true
+    },
+    {
+        color: 'hsl(0, 75%, 60%)',
+        label: 'Red'
+    },
+    {
+        color: 'hsl(30, 75%, 60%)',
+        label: 'Orange'
+    },
+    {
+        color: 'hsl(60, 75%, 60%)',
+        label: 'Yellow'
+    },
+    {
+        color: 'hsl(90, 75%, 60%)',
+        label: 'Light green'
+    },
+    {
+        color: 'hsl(120, 75%, 60%)',
+        label: 'Green'
+    },
+    {
+        color: 'hsl(150, 75%, 60%)',
+        label: 'Aquamarine'
+    },
+    {
+        color: 'hsl(180, 75%, 60%)',
+        label: 'Turquoise'
+    },
+    {
+        color: 'hsl(210, 75%, 60%)',
+        label: 'Light blue'
+    },
+    {
+        color: 'hsl(240, 75%, 60%)',
+        label: 'Blue'
+    },
+    {
+        color: 'hsl(270, 75%, 60%)',
+        label: 'Purple'
+    }
+]
+
+
 // Plugins to include in the build
-const default_plugins = [
+const DEFAULT_PLUGINS = [
     Essentials,
     Heading,
     Paragraph,
-    // Highlight,
+    Font,
     Bold, Italic, Underline,
     Superscript, Subscript, Strikethrough,
-    List, Table, TableToolbar, Alignment, BlockQuote,
+    
+    List, 
+    Table, TableToolbar, TableProperties, TableCellProperties,
+    Alignment, BlockQuote,
+    Indent, IndentBlock,
+    RemoveFormat,
 
-    Image, ImageToolbar, ImageCaption, ImageStyle, ImageUpload,
+    Image, ImageToolbar, ImageCaption, ImageStyle, ImageUpload,ImageResize,
     PasteFromOffice, MediaEmbed, Link
 ]
 
+
 // Editor Configuration
-const default_config = {
-        // plugins: { ... migrated to the default_plugins object ... }
+const DEFAULT_CONFIG = {
+        // plugins: { ... migrated to the DEFAULT_PLUGINS object ... }
         imageUploadUrl: "404",
         alignment: {
             options: ['left', 'right', 'center', 'justify']
         },
-        // highlight: {
-        //     options: [
-        //         {
-        //             model: 'redPen',
-        //             class: 'pen-red',
-        //             title: 'Red pen',
-        //             color: '#980000',
-        //             type: 'pen'
-        //         },
-        //         {
-        //             model: 'orangePen',
-        //             class: 'pen-orange',
-        //             title: 'Orange',
-        //             color: '#ffab40',
-        //             type: 'pen'
-        //         },
-        //         {
-        //             model: 'bluePen',
-        //             class: 'pen-blue',
-        //             title: 'Blue',
-        //             color: '#6d9eeb',
-        //             type: 'pen'
-        //         },
-        //         {
-        //             model: 'greenPen',
-        //             class: 'pen-green',
-        //             title: 'Red pen',
-        //             color: '#38761d',
-        //             type: 'pen'
-        //         },
-        //         {
-        //             model: 'grayPen',
-        //             class: 'pen-gray',
-        //             title: 'gray pen',
-        //             color: '#999999',
-        //             type: 'pen'
-        //         },
-        //     ]
-        // },
-
+        
         table: {
-            contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+            // contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+            contentToolbar: [
+                'tableProperties', 'tableCellProperties', '|',
+                'tableColumn', 'tableRow', 'mergeTableCells',
+                
+            ],
+
+            tableProperties: {
+                borderColors: COLOR_PALETTE,
+                backgroundColors: COLOR_PALETTE
+            },
+
+            // Set the palettes for table cells.
+            tableCellProperties: {
+                borderColors: COLOR_PALETTE,
+                backgroundColors: COLOR_PALETTE
+            }
         },
         image: {
-            toolbar: [ 'imageTextAlternative',
-                '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'
+            toolbar: [ 
+                'imageStyle:alignLeft', 
+                'imageStyle:full', 
+                'imageStyle:alignRight', 
+                '|', 
+                'imageTextAlternative',
+
+
             ],
             styles: [
                 // This option is equal to a situation where no style is applied.
@@ -128,14 +188,52 @@ const default_config = {
         },
         extraPlugins: [ UploadAdapter ],
 
-        toolbar: [  'heading',
-                    '|','undo', 'redo',
-                    '|', /* 'highlight' */, 'bold', 'italic', 'underline', 'strikethrough',
-                    '|', 'superscript', 'subscript',
-                    '|', 'alignment', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable',
-                    '|', 'link', 'mediaEmbed', 'imageUpload', // 'InsertImage'
+        fontFamily: {
+            options: [
+                'default',
+                'Arial, Helvetica, sans-serif',
+                'Courier New, Courier, monospace',
+                'Georgia, serif',
+                'Lucida Sans Unicode, Lucida Grande, sans-serif',
+                'Tahoma, Geneva, sans-serif',
+                'Times New Roman, Times, serif',
+                'Trebuchet MS, Helvetica, sans-serif',
+                'Verdana, Geneva, sans-serif',
+                'monospace',
+            ]
+        },
 
-                ],
+        fontSize: {
+            options: [
+                'tiny',
+                'default',
+                'big'
+            ]
+        },
+
+        fontColor: {
+            colors: COLOR_PALETTE
+        },
+        fontBackgroundColor: {
+            colors: COLOR_PALETTE
+        },
+
+        indentBlock: {
+            offset: 1,
+            unit: 'em'
+        },
+
+        toolbar: [  
+            'undo', 'redo',    
+            '|','heading',
+            '|','fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', 
+            '|', /* 'highlight' */, 'bold', 'italic', 'underline', 'strikethrough',
+            '|', 'superscript', 'subscript',
+            '|', 'removeFormat',            
+            '|', 'alignment', 'bulletedList', 'numberedList', 'blockQuote', 'outdent', 'indent', 'insertTable',
+            '|', 'link', 'mediaEmbed', 'imageUpload', // 'InsertImage'
+
+            ],
 
     }
 
@@ -147,17 +245,17 @@ class BalloonEditor extends BalloonEditorBase {}
 class DocumentEditor extends DocEditorBase {}
 
 // add the default config and plugins to the extended editor
-ClassicEditor.builtinPlugins = default_plugins;
-ClassicEditor.defaultConfig = default_config;
+ClassicEditor.builtinPlugins = DEFAULT_PLUGINS;
+ClassicEditor.defaultConfig = DEFAULT_CONFIG;
 
-InlineEditor.builtinPlugins = default_plugins;
-InlineEditor.defaultConfig = default_config;
+InlineEditor.builtinPlugins = DEFAULT_PLUGINS;
+InlineEditor.defaultConfig = DEFAULT_CONFIG;
 
-BalloonEditor.builtinPlugins = default_plugins;
-BalloonEditor.defaultConfig = default_config;
+BalloonEditor.builtinPlugins = DEFAULT_PLUGINS;
+BalloonEditor.defaultConfig = DEFAULT_CONFIG;
 
-DocumentEditor.builtinPlugins = default_plugins;
-DocumentEditor.defaultConfig = default_config;
+DocumentEditor.builtinPlugins = DEFAULT_PLUGINS;
+DocumentEditor.defaultConfig = DEFAULT_CONFIG;
 
 // TODO: potentially add methods to:
 //  - sanatize html
