@@ -1,10 +1,11 @@
 {
   "name": "custom_ck5",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Custom implementation of CKEditor 5 for use in HydroLearn project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "run-demo": "nodemon app",
     "build": "webpack --mode development",
     "auto-build": "webpack -w --mode development",
     "publish": "webpack --mode production"

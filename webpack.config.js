@@ -31,7 +31,10 @@ module.exports = {
                     {
                         loader: 'style-loader',
                         options: {
-                            singleton: true
+                            // updated 6/8/2020 CJR
+                            // singleton: true
+                            injectType: "singletonStyleTag"
+
                         }
                     },
                     {
