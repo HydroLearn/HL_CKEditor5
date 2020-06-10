@@ -42,13 +42,14 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 
     // image imports
         //import InsertImage from './custom_plugins/ImagePlugin'
-        import UploadAdapter from './custom_plugins/UploadAdapter'
+        // import UploadAdapter from './custom_plugins/UploadAdapter'
         import Image from '@ckeditor/ckeditor5-image/src/image';
         import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
         import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
         import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
         import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
         import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+        import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter';
 
 
 // Collection of color definitions for use by the font styling options
@@ -132,8 +133,13 @@ const DEFAULT_PLUGINS = [
     Indent, IndentBlock,
     RemoveFormat,
 
-    Image, ImageToolbar, ImageCaption, ImageStyle, ImageUpload,ImageResize,
-    PasteFromOffice, MediaEmbed, Link
+    Image, ImageToolbar, ImageCaption, ImageStyle, 
+    ImageUpload, 
+    SimpleUploadAdapter, 
+    ImageResize,
+    PasteFromOffice, 
+    MediaEmbed, 
+    Link
 ]
 
 
@@ -186,7 +192,7 @@ const DEFAULT_CONFIG = {
         mediaEmbed: {
             // configuration...
         },
-        extraPlugins: [ UploadAdapter ],
+        // extraPlugins: [ UploadAdapter ],
 
         fontFamily: {
             options: [
@@ -203,13 +209,13 @@ const DEFAULT_CONFIG = {
             ]
         },
 
-        fontSize: {
-            options: [
-                'tiny',
-                'default',
-                'big'
-            ]
-        },
+        // fontSize: {
+        //     options: [
+        //         'tiny',
+        //         'default',
+        //         'big'
+        //     ]
+        // },
 
         fontColor: {
             colors: COLOR_PALETTE
@@ -226,12 +232,14 @@ const DEFAULT_CONFIG = {
         toolbar: [  
             'undo', 'redo',    
             '|','heading',
-            '|','fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', 
+            '|','fontFamily', /* 'fontSize', */ 'fontColor', 'fontBackgroundColor', 
             '|', /* 'highlight' */, 'bold', 'italic', 'underline', 'strikethrough',
             '|', 'superscript', 'subscript',
             '|', 'removeFormat',            
             '|', 'alignment', 'bulletedList', 'numberedList', 'blockQuote', 'outdent', 'indent', 'insertTable',
-            '|', 'link', 'mediaEmbed', 'imageUpload', // 'InsertImage'
+            '|', 'link', 'mediaEmbed', 'imageUpload', 
+            'InsertImage',
+            'SimpleUploadAdapter',
 
             ],
 

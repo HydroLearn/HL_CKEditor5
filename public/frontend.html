@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>CKEditor 5</title>
+        <!-- jquery for funsies -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <style>
+            body {
+                background: #bacfd9;
+                font-family: sans-serif;
+
+            }
+
+            .sample_wrapper{
+                background: #f2f2f2;
+                padding: 15px;
+                border: 1px solid #969696;
+                box-shadow: #33333355 4px 5px 12px;
+                margin: 10px;
+            }
+
+            .note {
+                font-weight: normal;
+                font-style:italic;
+                font-size:.6em;
+            }
+
+        </style>
+
+        <link rel="stylesheet" type="text/css" href="ck-styling.css"></link>
+    </head>
+    <body>
+        <h1>Custom CKEditor 5 Build</h1>
+        <div class="sample_wrapper">
+            <h2>Classic Editor</h2>
+            <div class='editor classic ck-content'>
+                
+                    <p>testing hl text content</p>
+                    <p><strong>testing</strong> 
+                        <i>stylized</i> 
+                        <u>text</u> 
+                        <s>with</s> 
+                        <sup>an </sup>
+                        <sub>absurd </sub>
+                        <i><s><strong><u>example</u></strong></s></i></p>
+                        <p>&nbsp;</p>
+                        <p style="text-align:center;">testing alignment center</p>
+                        <p style="text-align:right;">testing alignment right</p>
+                        <ol><li>testing a UL</li><li>and its<ol><li>children</li><li>here</li></ol></li><li>and here</li></ol>
+                        <p>&nbsp;</p>
+                        <ul><li>testing an OL</li><li>and its<ul><li>children</li><li>here</li></ul></li><li>and here</li></ul>
+                        <p>&nbsp;</p>
+                        <blockquote><p>testing a block quote&nbsp;</p><p>and if it styles correctly</p></blockquote>
+                        <p>&nbsp;</p>
+                        <figure class="table">
+                            <table><tbody><tr><td>here's&nbsp;</td><td>a</td><td>standard</td></tr><tr><td>table</td><td>for&nbsp;</td><td>use&nbsp;</td></tr><tr><td>in</td><td>the&nbsp;</td><td>application</td></tr></tbody></table>
+                        </figure>
+                        <p>&nbsp;</p>
+                        <p>and here's an image repeated in various orientations</p>
+                        <figure class="image"><img src="https://via.placeholder.com/1000x300/02c7cd/fff?text=Placeholder%20image"><figcaption>with a caption centered</figcaption></figure>
+                        <figure class="image image-style-align-right"><img src="https://via.placeholder.com/1000x300/02c7cd/fff?text=Placeholder%20image"><figcaption>right aligned</figcaption></figure>
+                
+            </div>
+
+            
+        </div>
+        <!-- <div class="sample_wrapper ">
+            <h2>Balloon Editor <span class="note">Note: must make selection for controls to appear</span></h2>
+            <div class="editor balloon ck-content">
+                <p>
+                    Some sample inline content for example purposes. Clicking this text will highlight the editor
+                    and show the controls available for modifying the text and embedding plugins.
+                </p>
+            </div>
+        </div>
+
+        <div class="sample_wrapper">
+        <h2>Inline Editor <span class="note">Note: click text below and controls will appear</span></h2>
+
+            <div class="editor inline ck-content">
+                <p>
+                    Some sample inline content for example purposes. Clicking this text will highlight the editor
+                    and show the controls available for modifying the text and embedding plugins.
+                </p>
+            </div>
+        </div> -->
+        <!-- <script src="dist/HL_ck5_custom.js"></script> -->
+        <script>
+
+            // for each 'editor_window' instantiate a classic editor using default config
+            // $('.editor.classic').each(function(){
+
+            //     HL_CKEDITOR.default.classic_editor
+            //         .create(this,{
+            //             imageUploadUrl: "/upload_img/",
+            //             csrf_token: "test_token"
+            //         })
+            //         .catch(err => {
+            //             console.log(err.stack)
+            //         });
+            // })
+
+            // $('.editor.inline').each(function(){
+            //     HL_CKEDITOR.default.inline_editor
+            //         .create(this,{
+            //             imageUploadUrl: "/upload_img/",
+            //             csrf_token: "test_token"
+            //         })
+            //         .catch(err => {
+            //             console.log(err.stack)
+            //         });
+            // })
+
+            // $('.editor.balloon').each(function(){
+            //     HL_CKEDITOR.default.balloon_editor
+            //         .create(this,{
+            //             imageUploadUrl: "/upload_img/",
+            //             csrf_token: "test_token"
+            //         })
+            //         .catch(err => {
+            //             console.log(err.stack)
+            //         });
+            // })
+
+            // CKEDITOR.default.ClassicEditor
+            //     .create( document.querySelector('#editor2'))
+            //     .catch(err => {
+            //         console.log(err.stack)
+            //     });
+        </script>
+    </body>
+</html>
