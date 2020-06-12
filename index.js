@@ -40,15 +40,17 @@ app.get('/uploaded_images/:uploadid', function(req,res){
 });
 
 app.get('/upload_img/', function(req,res){
+    
     console.log('in upload get method... probably return null here.')
     res.send(null)
 
 });
 
 app.post(
-  "/upload_img",
+  "/upload_img/",
   upload.single("upload" /* name attribute of <file> element in your form */),
   (req, res) => {
+     const dummy = "butts"
       try{
           var return_obj = {
               url: "uploaded_images/" + req.file.filename
@@ -56,6 +58,8 @@ app.post(
           res.send(return_obj)
 
       }catch(err){
+
+        
           // delete the uploaded file if there was an issue
           console.log("in error.")
           fs.unlink(req.file.path, (err) => {

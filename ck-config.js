@@ -40,17 +40,17 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
     import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
     import Link from '@ckeditor/ckeditor5-link/src/link';
 
-    // image imports
-        //import InsertImage from './custom_plugins/ImagePlugin'
-        // import UploadAdapter from './custom_plugins/UploadAdapter'
+    // image imports       
+        
         import Image from '@ckeditor/ckeditor5-image/src/image';
         import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
         import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
         import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
         import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
         import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
-        import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter';
-
+        
+        import UploadAdapter from './custom_plugins/UploadAdapter'
+        // import FileRepository from '@ckeditor/ckeditor5-upload/src/filerepository';
 
 // Collection of color definitions for use by the font styling options
 const COLOR_PALETTE = [
@@ -134,12 +134,15 @@ const DEFAULT_PLUGINS = [
     RemoveFormat,
 
     Image, ImageToolbar, ImageCaption, ImageStyle, 
-    ImageUpload, 
-    SimpleUploadAdapter, 
+    
     ImageResize,
     PasteFromOffice, 
     MediaEmbed, 
-    Link
+    Link,
+    ImageUpload, 
+    // SimpleUploadAdapter, 
+    // UploadAdapter
+    // FileRepository
 ]
 
 
@@ -192,7 +195,7 @@ const DEFAULT_CONFIG = {
         mediaEmbed: {
             // configuration...
         },
-        // extraPlugins: [ UploadAdapter ],
+        extraPlugins: [ UploadAdapter ],
 
         fontFamily: {
             options: [
@@ -237,9 +240,12 @@ const DEFAULT_CONFIG = {
             '|', 'superscript', 'subscript',
             '|', 'removeFormat',            
             '|', 'alignment', 'bulletedList', 'numberedList', 'blockQuote', 'outdent', 'indent', 'insertTable',
-            '|', 'link', 'mediaEmbed', 'imageUpload', 
-            'InsertImage',
-            'SimpleUploadAdapter',
+            '|', 'link', 'mediaEmbed', 
+            
+            'imageUpload', 
+            
+            // 'SimpleUploadAdapter',
+            
 
             ],
 

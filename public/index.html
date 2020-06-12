@@ -103,14 +103,15 @@
                         // imageUploadUrl: "/upload_img/",
                         // csrf_token: "test_token"
 
-                        simpleUpload: {
+                        upload_config: {
                             // The URL that the images are uploaded to.
                             uploadUrl: '/upload_img/',
-
+                            payloadName: 'upload',
                             // Headers sent along with the XMLHttpRequest to the upload server.
                             headers: {
                                 'X-CSRF-TOKEN': 'TEST_TOKEN',
                                 // Authorization: 'Bearer <JSON Web Token>'
+                                "Accept": "application/json",
                             }
                         }
 
