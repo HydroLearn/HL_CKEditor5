@@ -53,7 +53,10 @@ app.post(
      const dummy = "butts"
       try{
           var return_obj = {
-              url: "uploaded_images/" + req.file.filename
+              'asset': {
+                url: "uploaded_images/" + req.file.filename
+              }
+              
           }
           res.send(return_obj)
 

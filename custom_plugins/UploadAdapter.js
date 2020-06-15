@@ -108,7 +108,7 @@ class Custom_Adapter {
         xhr.addEventListener( 'abort', () => reject() );
         xhr.addEventListener( 'load', () => {
             const response = xhr.response;
-			const responsePayload = this.options.responsePayload || null;
+			const responsePayload = this.options.responsePayloadName || null;
             if ( !response || response.error ) {
                 return reject( response && response.error ? response.error.message : genericErrorText );
             }
@@ -125,13 +125,13 @@ class Custom_Adapter {
 						}
 					}
 			 */
-			
-			const returnObj = (!!responsePayload) ? reponse[responsePayload] : response;
+			debugger;
+			const returnObj = (!!responsePayload) ? response[responsePayload] : response;
 
 		
 
 
-            alert('response' + returnObj.url)
+            //alert('response' + returnObj.url)
 
             resolve( returnObj.url ? { default: returnObj.url } : returnObj.urls );
         } );
