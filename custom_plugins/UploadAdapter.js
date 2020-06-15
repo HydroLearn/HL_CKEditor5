@@ -124,10 +124,9 @@ class Custom_Adapter {
 						 ...
 						}
 					}
-			 */
-			debugger;
+			 */			
 			const returnObj = (!!responsePayload) ? response[responsePayload] : response;
-
+					
 		
 
 
@@ -147,6 +146,11 @@ class Custom_Adapter {
 			} );
 		}
     }
+
+	_processSuccess(response){
+
+
+	}
 
     // Prepares the data and sends the request.
     _sendRequest(file) {
