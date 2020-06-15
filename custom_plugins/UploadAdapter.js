@@ -108,14 +108,32 @@ class Custom_Adapter {
         xhr.addEventListener( 'abort', () => reject() );
         xhr.addEventListener( 'load', () => {
             const response = xhr.response;
-
+			const responsePayload = this.options.responsePayload || null;
             if ( !response || response.error ) {
                 return reject( response && response.error ? response.error.message : genericErrorText );
             }
 
-            alert('response' + response.url)
+			/*		 
 
-            resolve( response.url ? { default: response.url } : response.urls );
+			 response is returning a JSON object of 
+				 
+			 	{
+					 'asset': { 
+						 ..., 
+						 url:"...", 
+						 ...
+						}
+					}
+			 */
+			
+			const returnObj = (!!responsePayload) ? reponse[responsePayload] : response;
+
+		
+
+
+            alert('response' + returnObj.url)
+
+            resolve( returnObj.url ? { default: returnObj.url } : returnObj.urls );
         } );
 
         // Upload progress when it is supported.
@@ -136,7 +154,7 @@ class Custom_Adapter {
         
         // Set headers if specified.
         const headers = this.options.headers || {};
-        const payloadName = this.options.payloadName || 'upload';
+        const requestPayloadName = this.options.requestPayloadName || 'upload';
 
         for ( const headerName of Object.keys( headers ) ) {
             this.xhr.setRequestHeader( headerName, headers[ headerName ] );
@@ -145,7 +163,7 @@ class Custom_Adapter {
         // Prepare the form data.
         const data = new FormData();
         
-        data.append( payloadName, file );
+        data.append( requestPayloadName, file );
 
         // Send the request.
         this.xhr.send( data );

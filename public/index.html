@@ -106,7 +106,9 @@
                         upload_config: {
                             // The URL that the images are uploaded to.
                             uploadUrl: '/upload_img/',
-                            payloadName: 'upload',
+                            requestPayloadName: 'upload',
+                            // responsePayloadName: 'asset',
+
                             // Headers sent along with the XMLHttpRequest to the upload server.
                             headers: {
                                 'X-CSRF-TOKEN': 'TEST_TOKEN',
