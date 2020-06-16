@@ -15,6 +15,9 @@
     --ck-todo-list-checkmark-size: 16px;
 }
 
+/* revert all child content styling, revising bootstrap changes are a nightmare*/ 
+.ck-content * { all:revert; }
+
 /* clearfix helper for having a floated element at the bottom of container*/
 .ck-content:after{
     content: " ";
