@@ -32,6 +32,25 @@
                 font-size:.6em;
             }
 
+            .update_preview {
+                display:block;
+                margin:auto;
+                width: 80%;
+                background: green;
+                color:white;
+                border-radius: .7em;
+                border:none;
+                font-size: 3em;
+                cursor: pointer;
+                transition:all .3s;
+
+            }
+
+            .update_preview:hover {
+                background: blue;
+
+            }
+
         </style>
     </head>
     <body>
@@ -96,10 +115,13 @@
 
             </div>
 
-            <button class="update_preview">UPDATE PREVIEW</button>
+            
         </div>
+        
+        <button class="update_preview">UPDATE PREVIEW</button>
 
         <div class="sample_wrapper">
+            
             <h2>CONTENT PREVIEW</h2>
             <div class='preview_content ck-content'>
                 <h3>CLICK THE UPDATE PREVIEW BUTTON TO GENERATE PREVIEW</h3>
