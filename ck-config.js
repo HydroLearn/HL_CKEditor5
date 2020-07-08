@@ -19,6 +19,7 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
     import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
     import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
     import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
+    import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock';
     import Indent from '@ckeditor/ckeditor5-indent/src/indent';
     import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
     import Font from '@ckeditor/ckeditor5-font/src/font';
@@ -48,10 +49,11 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
         import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
         import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
         import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
-        
+         
         import UploadAdapter from './custom_plugins/UploadAdapter'
-        // import FileRepository from '@ckeditor/ckeditor5-upload/src/filerepository';
-
+        
+        
+        
 // Collection of color definitions for use by the font styling options
 const COLOR_PALETTE = [
     {
@@ -140,9 +142,9 @@ const DEFAULT_PLUGINS = [
     MediaEmbed, 
     Link,
     ImageUpload, 
-    // SimpleUploadAdapter, 
-    // UploadAdapter
-    // FileRepository
+    
+    CodeBlock
+    
 ]
 
 
@@ -237,14 +239,15 @@ const DEFAULT_CONFIG = {
             '|','heading',
             '|','fontFamily', /* 'fontSize', */ 'fontColor', 'fontBackgroundColor', 
             '|', /* 'highlight' */, 'bold', 'italic', 'underline', 'strikethrough',
-            '|', 'superscript', 'subscript',
-            '|', 'removeFormat',            
-            '|', 'alignment', 'bulletedList', 'numberedList', 'blockQuote', 'outdent', 'indent', 'insertTable',
+            '|', 'superscript', 'subscript',            
+            '|', 'removeFormat',                        
+            '|', 'alignment', 'bulletedList', 'numberedList', 'outdent', 'indent', 
+            '|', 'blockQuote', 'codeBlock','insertTable',
             '|', 'link', 'mediaEmbed', 
             
             'imageUpload', 
             
-            // 'SimpleUploadAdapter',
+            
             
 
             ],

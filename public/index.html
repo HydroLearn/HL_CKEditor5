@@ -6,6 +6,10 @@
         <!-- jquery for funsies -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+        <link rel="stylesheet" href="highlightJS/styles/default.css">
+        <script src="highlightJS/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
         <style>
             body {
                 background: #bacfd9;
@@ -42,7 +46,26 @@
                     <img src="https://via.placeholder.com/1000x300/02c7cd/fff?text=Placeholder%20image" alt="CKEditor 5 rocks!">
                 </figure> -->
 
-
+                <pre><code class="language-python">
+            @XBlock.json_handler
+            def studio_submit(self, data, suffix=''):
+                """
+                Course author pressed the Save button in Studio
+                """
+        
+                result = {"submitted": "false", "saved": "false", "message": "", "preview": ""}
+        
+                if len(data) &gt; 0:
+                    # NOTE: No validation going on here; be careful with your code
+                    self.display_name = data["display_name"]
+                    self.dependencies = ""
+                    self.content = data["body_html"]
+        
+                    result["submitted"] = "true"
+                    result["saved"] = "true"
+        
+                return result
+                </code></pre>
                 
                 <p>testing hl text content</p>
                 <p><strong>testing</strong> 
@@ -71,8 +94,20 @@
             
 
             </div>
+
+            <button class="update_preview">UPDATE PREVIEW</button>
         </div>
+
         <div class="sample_wrapper">
+            <h2>CONTENT PREVIEW</h2>
+            <div class='preview_content ck-content'>
+                <h3>CLICK THE UPDATE PREVIEW BUTTON TO GENERATE PREVIEW</h3>
+            </div>
+
+            
+        </div>
+
+        <!-- <div class="sample_wrapper">
             <h2>Balloon Editor <span class="note">Note: must make selection for controls to appear</span></h2>
             <div class="editor balloon">
                 <p>
@@ -92,8 +127,11 @@
                 </p>
             </div>
         </div>
+         -->
         <script src="dist/HL_ck5_custom.js"></script>
         <script>
+
+            let editor;
 
             // for each 'editor_window' instantiate a classic editor using default config
             $('.editor.classic').each(function(){
@@ -117,10 +155,26 @@
                             }
                         }
 
-                    })
+                    }).then(newEditor => {editor = newEditor;})
                     .catch(err => {
                         console.log(err.stack)
                     });
+            })
+
+
+            // update the preview with updated content
+            $('.update_preview').click(function () {
+                let preview_content = document.querySelector('.preview_content');
+                const updated_content = editor.getData();
+
+                // update preview content with editor export
+                preview_content.innerHTML = updated_content;
+                
+                // run code highlighter for internal codeblocks
+                preview_content.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+            
             })
 
             // $('.editor.inline').each(function(){
