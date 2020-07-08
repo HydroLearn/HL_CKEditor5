@@ -163,14 +163,29 @@
     clear: both;
     text-align: center;
     margin: 1em auto;
+    
 }
 /* ckeditor5-image/theme/image.css */
+
 .ck-content .image img {
     display: block;
     margin: 0 auto;
     max-width: 100%;
     min-width: 50px;
+    
 }
+
+/* added border to hovered linked images */
+.ck-content .image > a img {    
+    transition: border .3s;
+    border:2px solid #0e7fe1;
+}
+
+.ck-content .image:hover > a img {    
+    
+    border:2px solid #ffc83d;
+}
+
 /* ckeditor5-image/theme/imagecaption.css */
 .ck-content .image > figcaption {
     display: table-caption;

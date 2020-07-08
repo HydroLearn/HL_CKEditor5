@@ -49,7 +49,7 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
         import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
         import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
         import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
-         
+        import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage' 
         import UploadAdapter from './custom_plugins/UploadAdapter'
         
         
@@ -140,7 +140,7 @@ const DEFAULT_PLUGINS = [
     ImageResize,
     PasteFromOffice, 
     MediaEmbed, 
-    Link,
+    Link, LinkImage,
     ImageUpload, 
     
     CodeBlock
@@ -182,6 +182,7 @@ const DEFAULT_CONFIG = {
                 'imageStyle:alignRight', 
                 '|', 
                 'imageTextAlternative',
+                '|', "linkImage"
 
 
             ],
@@ -252,6 +253,20 @@ const DEFAULT_CONFIG = {
 
             ],
 
+        link: {
+            decorators: {                    
+                openInNewTab: {
+                    mode: 'manual',
+                    label: 'Open in a new tab',
+                    defaultValue: true,			// This option will be selected by default.
+                    attributes: {
+                        target: '_blank',
+                        rel: 'noopener noreferrer'
+                    }
+                }
+            }
+        },
+        
     }
 
 
