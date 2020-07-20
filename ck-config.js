@@ -140,7 +140,9 @@ const DEFAULT_PLUGINS = [
     ImageResize,
     PasteFromOffice, 
     MediaEmbed, 
-    Link, LinkImage,
+    Link, 
+    // TODO: once the linking fix has been published and new release fixes it, include this plugin
+    // LinkImage,
     ImageUpload, 
     
     CodeBlock

@@ -67,24 +67,24 @@
                 </figure> -->
 
                 <pre><code class="language-python">
-            @XBlock.json_handler
-            def studio_submit(self, data, suffix=''):
-                """
-                Course author pressed the Save button in Studio
-                """
-        
-                result = {"submitted": "false", "saved": "false", "message": "", "preview": ""}
-        
-                if len(data) &gt; 0:
-                    # NOTE: No validation going on here; be careful with your code
-                    self.display_name = data["display_name"]
-                    self.dependencies = ""
-                    self.content = data["body_html"]
-        
-                    result["submitted"] = "true"
-                    result["saved"] = "true"
-        
-                return result
+ @XBlock.json_handler
+ def studio_submit(self, data, suffix=''):
+     """
+     Course author pressed the Save button in Studio
+     """
+ 
+     result = {"submitted": "false", "saved": "false", "message": "", "preview": ""}
+
+     if len(data) &gt; 0:
+         # NOTE: No validation going on here; be careful with your code
+         self.display_name = data["display_name"]
+         self.dependencies = ""
+         self.content = data["body_html"]
+
+         result["submitted"] = "true"
+         result["saved"] = "true"
+
+     return result
                 </code></pre>
                 
                 <p>testing hl text content</p>
