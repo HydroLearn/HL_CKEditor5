@@ -139,7 +139,7 @@ const DEFAULT_PLUGINS = [
     
     ImageResize,
     PasteFromOffice, 
-    MediaEmbed, 
+    // MediaEmbed, 
     Link, 
     // TODO: once the linking fix has been published and new release fixes it, include this plugin
     // LinkImage,
@@ -246,7 +246,8 @@ const DEFAULT_CONFIG = {
             '|', 'removeFormat',                        
             '|', 'alignment', 'bulletedList', 'numberedList', 'outdent', 'indent', 
             '|', 'blockQuote', 'codeBlock','insertTable',
-            '|', 'link', 'mediaEmbed', 
+            '|', 'link', 
+            // 'mediaEmbed', 
             
             'imageUpload', 
             
